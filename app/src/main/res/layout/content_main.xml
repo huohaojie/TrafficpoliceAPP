@@ -69,6 +69,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <LinearLayout
+            android:id="@+id/linearLayout_chepai"
             android:layout_marginTop="10dp"
             android:background="@color/color_gray"
             android:layout_width="100dp"
@@ -111,6 +112,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/linearlayout_weizhang"
             android:layout_marginTop="10dp"
             android:background="@color/color_gray"
             android:layout_width="100dp"
@@ -157,6 +159,7 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linearLayout_xianxing"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"

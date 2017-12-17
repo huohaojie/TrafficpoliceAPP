@@ -22,8 +22,10 @@ import android.widget.TextView;
 import com.example.trafficpoliceapp.R;
 import com.example.trafficpoliceapp.entity.MyUser;
 import com.example.trafficpoliceapp.ui.AboutActivity;
+import com.example.trafficpoliceapp.ui.ChePaiActivity;
 import com.example.trafficpoliceapp.ui.LocationActivity;
 import com.example.trafficpoliceapp.ui.QrCodeActivity;
+import com.example.trafficpoliceapp.ui.QueryActivity;
 import com.example.trafficpoliceapp.ui.SettingActivity;
 import com.example.trafficpoliceapp.ui.UserActivity;
 import com.example.trafficpoliceapp.ui.WebActivity;
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView pager_one,pager_two,pager_three;
     //lineatlayout
     private LinearLayout linearLayout_chepai,linearLayout_dengji,
-    linearLayout_weizhan,linearLayout_daima,linearLayout_xianxing,linearLayout_dingwei,linearLayout_news;
+    linearLayout_weizhang,linearLayout_daima,linearLayout_xianxing,linearLayout_dingwei,linearLayout_news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,8 +135,17 @@ public class MainActivity extends AppCompatActivity
         linearLayout_dingwei = (LinearLayout) findViewById(R.id.linearLayout_dingwei);
         linearLayout_dingwei.setOnClickListener(this);
 
+        //车牌识别
+        linearLayout_chepai = (LinearLayout) findViewById(R.id.linearLayout_chepai);
+        linearLayout_chepai.setOnClickListener(this);
 
+        //限行
+        linearLayout_xianxing = (LinearLayout) findViewById(R.id.linearLayout_xianxing);
+        linearLayout_xianxing.setOnClickListener(this);
 
+        //违章
+        linearLayout_weizhang = (LinearLayout) findViewById(R.id.linearlayout_weizhang);
+        linearLayout_weizhang.setOnClickListener(this);
 
         NavigationView naviView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -269,7 +280,15 @@ public class MainActivity extends AppCompatActivity
             case R.id.linearLayout_news:
                 startActivity(new Intent(MainActivity.this, WechatActivity.class));
                 break;
-
+            case R.id.linearLayout_chepai:
+                ChePaiActivity.start(this);
+                break;
+            case R.id.linearlayout_weizhang:
+                //TODO 违章activity
+                break;
+            case R.id.linearLayout_xianxing:
+                QueryActivity.start(this);
+                break;
         }
 
 
