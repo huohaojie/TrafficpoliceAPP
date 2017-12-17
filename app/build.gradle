@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.2"
+    aaptOptions{
+        cruncherEnabled=false
+        useNewCruncher=false
+    }
+    defaultConfig {
+        applicationId "com.example.trafficpoliceapp"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters 'armeabi','x86' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+//            jniLibs.srcDir 'libs'
+//            jni.srcDirs = []
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    testCompile 'junit:junit:4.12'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //Bmob
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile project(path: ':libzxing')
+    //Picasso
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    //RxVolley
+    compile('com.kymjs.rxvolley:rxvolley:1.1.2') {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+        exclude group: 'com.squareup.okio'
+        exclude group: 'io.reactivex'
+    }
+    //RxVolley下载模块
+    compile('com.kymjs.rxvolley:okhttp:1.1.0') {
+        exclude group: 'com.squareup.okhttp3'
+        exclude group: 'com.squareup.okio'
+    }
+    //Bmob
+    //    //百度地图
+    //    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/httpmime-4.1.2.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+}
+android {
+    lintOptions {
+        abortOnError false
+    }
+}

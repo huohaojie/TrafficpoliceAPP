@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">执法助手</string>
+    <string name="app_tv_splash">执法助手</string>
+    <string name="app_guide_tv">引导页</string>
+</resources>
