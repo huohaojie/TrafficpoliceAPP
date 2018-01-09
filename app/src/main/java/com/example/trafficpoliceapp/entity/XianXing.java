@@ -160,9 +160,12 @@ public class XianXing {
       DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
       StringBuilder builder = new StringBuilder(200);
-      builder.append("信息：").append(msg).append('\n')
-              .append("日期：").append(format.format(date)).append('\n')
-              .append("城市：").append(cityName).append('\n')
+      builder.append("信息：").append(msg).append('\n');
+              if(date != null){
+                builder.append("日期：").append(format.format(date)).append('\n');
+              }
+
+             builder .append("城市：").append(cityName).append('\n')
               .append("星期：").append(weekDay).append('\n')
               .append("返回码：").append(ret_code).append('\n')
               .append("限行信息：").append('\n');
