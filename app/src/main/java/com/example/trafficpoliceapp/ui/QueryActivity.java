@@ -23,7 +23,6 @@ import okhttp3.Response;
 
 /**
  * Project     :     TrafficpoliceAPP
- * Author      :     Cricin
  * Date        :     17/12/17
  */
 

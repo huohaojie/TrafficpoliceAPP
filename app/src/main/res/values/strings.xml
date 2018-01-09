@@ -76,11 +76,14 @@
     <string name="location_btn_tt1">我的位置</string>
     <string name="dialog_btn_ok">确定</string>
     <string name="activity_wechatactivity">微信精选</string>
-    <string name="pager_one_url"><![CDATA[https://mp.weixin.qq.com/s?src=16&ver=546&timestamp=1513155413&signature=JVvzsuJVyVEsLDNEEANVe-G3noBmVOnGhur9GwOHKqhe4-EKA*5mPRGwGQaE2fQyb5sUopbU1vi1p5OlBiAEfQFq5RFPvMCX4Fi6tdDnkyc=]]></string>
+    <string name="pager_one_url">http://baijiahao.baidu.com/s?id=1586760285306682073</string>
     <string name="pager_one_title">给形式主义官僚主义画个像：表态多调门高、行动少落实差</string>
     <string name="pager_two_title">习近平：擦清历史的镜子，走好未来的路</string>
-    <string name="pager_two_url"><![CDATA[https://mp.weixin.qq.com/s?src=16&ver=546&timestamp=1513155549&signature=6iWKyGYTXCmT1sad7UYXI7jtWPUHoNO1*MnBtfNQjhp-yuuZLZ-DrvRhYKPLNRuMHKQYFoaf*Mfk1LA7TP4GmNDcJ88yTe*DNXKu-SkSAhk=]]></string>
-    <string name="pager_three_title">勇挑重担，攻坚克难！新区交警率先完成黄标车淘汰任务</string>
-    <string name="pager_three_url"><![CDATA[https://mp.weixin.qq.com/s?src=16&ver=546&timestamp=1513156132&signature=GSBDnM5fk1Ob9etVnGsCXwAm8MEIn5tI9Yv8BV9wxe*BhVXkPUQus0pQLyABVCs-JUuo69gEQm3bVn9Jp33-cDV5C5SQgSI7xLosU*MhLbQ=]]></string>
+    <string name="pager_two_url">http://news.youth.cn/sz/201712/t20171213_11145387.htm</string>
+    <string name="pager_three_title">杭州市道路交通违法行为曝光台</string>
+    <string name="pager_three_url">http://www.sohu.com/a/205582363_672260</string>
     <string name="activity_infor_title">车辆违章信息录入</string>
+    <string name="activity_information">信息录入</string>
+    <string name="activity_traffic_query">违章查询</string>
+    <string name="activity_traffic_code">违章代码查询</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.trafficpoliceapp.ui;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import cn.bmob.v3.listener.SaveListener;
 
 public class InformationActivity extends BaseActivity implements View.OnClickListener {
     private Button btn_date;
+    private Button btn_location;
     private int mYear;
     private int mMonth;
     private int mDay;
@@ -56,6 +58,9 @@ public class InformationActivity extends BaseActivity implements View.OnClickLis
         btn_date = (Button) findViewById(R.id.btn_date);
         btn_date.setOnClickListener(this);
 
+        btn_location = (Button) findViewById(R.id.btn_location);
+        btn_location.setOnClickListener(this);
+
         et_plate_num = (EditText) findViewById(R.id.et_plate_num);
         et_date = (EditText) findViewById(R.id.et_date);
         et_location = (EditText) findViewById(R.id.et_location);
@@ -74,6 +79,10 @@ public class InformationActivity extends BaseActivity implements View.OnClickLis
             case R.id.btn_date:
                 //调用时间选择器
                 new DatePickerDialog(this,onDateSetListener, mYear, mMonth, mDay).show();
+                break;
+            case R.id.btn_location:
+                Intent intent = new Intent(InformationActivity.this, LocationActivity.class);
+                startActivityForResult(intent, 100);
                 break;
             case R.id.record_btn:
 
@@ -161,4 +170,13 @@ public class InformationActivity extends BaseActivity implements View.OnClickLis
             et_date.setText(days);
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 &&resultCode == RESULT_OK) {
+            et_location.setText(data.getStringExtra("location"));
+        }
+
+    }
 }

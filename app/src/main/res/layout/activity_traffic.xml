@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_wihte_frame">
+        <EditText
+            android:id="@+id/query_traffic"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:hint="请输入要查询的车牌号" />
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="30dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/query"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_infor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="车辆违章信息"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"/>
+
+    <!--车牌号-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="车牌号:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_plate_num"/>
+    </LinearLayout>
+
+    <!--违章日期-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="违章日期:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_date"/>
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="选取" />
+    </LinearLayout>
+    <!--违章地点-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="违章地点:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_location"/>
+        <Button
+            android:id="@+id/btn_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="定位" />
+    </LinearLayout>
+    <!--违章类型-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="违章类型:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_kind"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="处罚决定"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"/>
+
+    <!--罚金-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="罚金:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_money"/>
+    </LinearLayout>
+
+    <!--扣分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="扣分:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_score"/>
+    </LinearLayout>
+
+    <!--驾驶员-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="驾驶员:"
+            android:textSize="20dp" />
+        <EditText
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_driver"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_update_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="确认修改"
+            android:visibility="gone"
+            android:background="@drawable/button_bg"
+            android:textColor="@color/color_white"/>
+
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="更新"
+            android:background="@drawable/button_bg"
+            android:textColor="@color/color_white"/>
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="删除"
+            android:background="@drawable/button_bg"
+            android:textColor="@color/color_white"/>
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="清空"
+            android:background="@drawable/button_bg"
+            android:textColor="@color/color_white"/>
+    </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:padding="10dp"
-    android:orientation="vertical">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/preview"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"/>
-
-
-    <TextView
-        android:id="@+id/recognize_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:text="识别结果："/>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_wihte_frame">
+            <EditText
+                android:id="@+id/query_code"
+                android:layout_width="250dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:hint="请输入违章代码" />
+            <Button
+                android:id="@+id/btn_code_query"
+                android:layout_width="30dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/query"/>
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout_information"
+            android:id="@+id/linearLayout_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="车主信息"
+                android:text="违章代码"
                 android:layout_marginTop="10dp"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:textColor="@color/colorAccent"/>
 
-            <!--车牌号-->
+            <!--代码-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,16 +54,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="车牌号:"
+                    android:text="代码:"
                     android:textSize="20dp" />
                 <EditText
                     android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_platenum"/>
+                    android:id="@+id/et_code"/>
             </LinearLayout>
 
-            <!--车主-->
+            <!--扣分-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,16 +72,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="车主:"
+                    android:text="扣分:"
                     android:textSize="20dp" />
                 <EditText
                     android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_car_name"/>
+                    android:id="@+id/et_code_score"/>
             </LinearLayout>
 
-            <!--身份证-->
+            <!--处罚-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,16 +90,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="身份证号:"
+                    android:text="处罚:"
                     android:textSize="20dp" />
                 <EditText
                     android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_num"/>
+                    android:id="@+id/et_done"/>
             </LinearLayout>
 
-            <!--籍贯-->
+            <!--违章行为-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,16 +108,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="籍贯:"
+                    android:text="违章行为:"
                     android:textSize="20dp" />
                 <EditText
                     android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_loca"/>
+                    android:id="@+id/et_violation"/>
             </LinearLayout>
 
-            <!--车型-->
+            <!--依据-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,17 +126,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="车型:"
+                    android:text="依据:"
                     android:textSize="20dp" />
                 <EditText
                     android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/et_car"/>
+                    android:id="@+id/et_law"/>
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_iknow"
+                android:id="@+id/btn_know"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -147,26 +146,5 @@
 
         </LinearLayout>
     </LinearLayout>
-    </ScrollView>
 
-    <Button
-        android:id="@+id/select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="开始选择图片"
-        android:layout_marginBottom="10dp"
-        android:textSize="15sp"
-        android:textColor="@color/color_white"
-        android:background="@drawable/button_bg"/>
-
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始识别"
-        android:textColor="@color/color_white"
-        android:background="@drawable/button_bg"/>
-
-
-</LinearLayout>
+</ScrollView>

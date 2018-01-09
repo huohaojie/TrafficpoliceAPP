@@ -68,7 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         keep_password = (CheckBox) findViewById(R.id.keep_password);
         //初始化dialog
-        dialog = new CustomDialog(this, 100, 100, R.layout.dialog_loding, R.style.Theme_dialog, Gravity.CENTER,R.style.pop_anim_style);
+        dialog = new CustomDialog(this, 100, 100, R.layout.dialog_loding,
+                R.style.Theme_dialog, Gravity.CENTER,R.style.pop_anim_style);
         //屏幕外点击无效
       dialog.setCancelable(true);
         //设置选中的状态

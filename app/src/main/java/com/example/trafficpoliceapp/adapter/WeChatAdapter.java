@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by Hello World on 2017/12/12.
+ * 描述：微信精选适配器
  */
 
 public class WeChatAdapter extends BaseAdapter{

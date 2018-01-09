@@ -23,10 +23,13 @@ import com.example.trafficpoliceapp.R;
 import com.example.trafficpoliceapp.entity.MyUser;
 import com.example.trafficpoliceapp.ui.AboutActivity;
 import com.example.trafficpoliceapp.ui.ChePaiActivity;
+import com.example.trafficpoliceapp.ui.InformationActivity;
 import com.example.trafficpoliceapp.ui.LocationActivity;
 import com.example.trafficpoliceapp.ui.QrCodeActivity;
 import com.example.trafficpoliceapp.ui.QueryActivity;
 import com.example.trafficpoliceapp.ui.SettingActivity;
+import com.example.trafficpoliceapp.ui.TrafficCodeActivity;
+import com.example.trafficpoliceapp.ui.TrafficqueryActivity;
 import com.example.trafficpoliceapp.ui.UserActivity;
 import com.example.trafficpoliceapp.ui.WebActivity;
 import com.example.trafficpoliceapp.ui.WechatActivity;
@@ -138,6 +141,9 @@ public class MainActivity extends AppCompatActivity
         //车牌识别
         linearLayout_chepai = (LinearLayout) findViewById(R.id.linearLayout_chepai);
         linearLayout_chepai.setOnClickListener(this);
+        //违章信息录入
+        linearLayout_dengji = (LinearLayout) findViewById(R.id.linearLayout_dengji);
+        linearLayout_dengji.setOnClickListener(this);
 
         //限行
         linearLayout_xianxing = (LinearLayout) findViewById(R.id.linearLayout_xianxing);
@@ -146,6 +152,10 @@ public class MainActivity extends AppCompatActivity
         //违章
         linearLayout_weizhang = (LinearLayout) findViewById(R.id.linearlayout_weizhang);
         linearLayout_weizhang.setOnClickListener(this);
+
+        //代码
+        linearLayout_daima = (LinearLayout) findViewById(R.id.linearLayout_daima);
+        linearLayout_daima.setOnClickListener(this);
 
         NavigationView naviView = (NavigationView) findViewById(R.id.nav_view);
 
@@ -243,7 +253,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(this, QrCodeActivity.class));
 
         } else if (id == R.id.nav_location) {
-
+            startActivity(new Intent(this,LocationActivity.class));
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(this,AboutActivity.class));
         }
@@ -284,10 +294,16 @@ public class MainActivity extends AppCompatActivity
                 ChePaiActivity.start(this);
                 break;
             case R.id.linearlayout_weizhang:
-                //TODO 违章activity
+                startActivity(new Intent(MainActivity.this, TrafficqueryActivity.class));
                 break;
             case R.id.linearLayout_xianxing:
                 QueryActivity.start(this);
+                break;
+            case R.id.linearLayout_dengji:
+                startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                break;
+            case R.id.linearLayout_daima:
+                startActivity(new Intent(MainActivity.this, TrafficCodeActivity.class));
                 break;
         }
 

@@ -1,10 +1,16 @@
 package com.example.trafficpoliceapp.ui;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -25,6 +31,7 @@ import com.example.trafficpoliceapp.R;
 import com.example.trafficpoliceapp.utils.L;
 import com.example.trafficpoliceapp.view.CustomDialog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +42,7 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
 
     public LocationClient mLocationClient = null;
     private MyLocationListener myListener = new MyLocationListener();
-    ;
+
 
     private MapView mMapView;
     private BaiduMap mBaiduMap;
@@ -45,10 +52,10 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
         //提示框
     private CustomDialog dialog;
 
-    private TextView tv_location;
+    private EditText tv_location;
     private Button btn_location_ok;
     private Button btn_location_cancel;
-    private View view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +81,14 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
         dialog = new CustomDialog(this, 0, 0, R.layout.dialog_location, R.style.pop_anim_style, Gravity.CENTER,0);
         //屏幕外点击无效
         dialog.setCancelable(false);
-        tv_location= (TextView) dialog.findViewById(R.id.tv_location);
+        tv_location= (EditText) dialog.findViewById(R.id.tv_location);
+        tv_location.setEnabled(false);
+
         btn_location_cancel = (Button) dialog.findViewById(R.id.btn_location_cancel);
         btn_location_cancel.setOnClickListener(this);
+
+        btn_location_ok = (Button) dialog.findViewById(R.id.btn_location_ok);
+        btn_location_ok.setOnClickListener(this);
 //        initLocation();
 //
 //        //开启定位
@@ -85,23 +97,20 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
 //
 //        tv_location.setText(addr);
 
-//        List<String> permissionList = new ArrayList<>();
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
-//        }
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//            permissionList.add(Manifest.permission.READ_PHONE_STATE);
-//        }
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-//        }
-//        if (!permissionList.isEmpty()) {
-//            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
-//            ActivityCompat.requestPermissions(this, permissions, 1);
-//        } else {
-//            initLocation();
-////            requestLocation();
-//        }
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        } else {
+            initLocation();
+//            requestLocation();
+        }
 
     }
 
@@ -112,28 +121,28 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
 //        mLocationClient.start();
 //        L.e("开始定位");
 //    }
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//        switch (requestCode) {
-//            case 1:
-//                if (grantResults.length > 0) {
-//                    for (int result : grantResults) {
-//                        if (result != PackageManager.PERMISSION_GRANTED) {
-//                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
-//                            finish();
-//                            return;
-//                        }
-//                    }
-//                    initLocation();
-////                    requestLocation();
-//                } else {
-//                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
-//                    finish();
-//                }
-//                break;
-//            default:
-//        }
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0) {
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
+                            finish();
+                            return;
+                        }
+                    }
+                    initLocation();
+//                    requestLocation();
+                } else {
+                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
+    }
 
     private void initLocation() {
         LocationClientOption option = new LocationClientOption();
@@ -199,6 +208,14 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.btn_location_cancel:
                 dialog.dismiss();
+                break;
+            case R.id.btn_location_ok:
+//                ShareUtils.putString(this,"location",tv_location.getText().toString().trim());
+
+                Intent intent = new Intent();
+                intent.putExtra("location", tv_location.getText().toString().trim());
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
         }
 
@@ -274,7 +291,7 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
                 }
             }
             //位置信息发送到dialog 上
-            tv_location.setText("[我的位置]\n" + location.getAddrStr());
+            tv_location.setText(location.getAddrStr());
             //定位的结果
             L.i(sb.toString());
             L.e("结束定位");
@@ -306,18 +323,7 @@ public class LocationActivity extends BaseActivity implements View.OnClickListen
                 @Override
                 public boolean onMarkerClick(Marker marker) {
                     dialog.show();
-//                    LatLng latLng = marker.getPosition();
-//                    Geocoder geocoder = Geocoder.newInstance();
-//                    geocoder.reverseGeoCode(new ReverseGeoCodeOption().location(latLng));
-//                    geocoder.setOnGetGeoCodeResultListener(new OnGetGeoCodeResultListener()){
-//                        @Override
-//                        public void onGetReverseGeoCodeResult(ReverseGeoCodeResult reverseGeoCodeResult){
-//                            //获取点击的坐标地址
-//                            address = reverseGeoCodeResult.getAddress();
-//                            System.out.println("address="+address);
-//                        }
-//
-//                    }
+
                     return false;
                 }
             });

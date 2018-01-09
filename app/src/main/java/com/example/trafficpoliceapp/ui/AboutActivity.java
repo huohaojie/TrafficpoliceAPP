@@ -5,7 +5,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.trafficpoliceapp.R;
-import com.example.trafficpoliceapp.utils.UtilTools;
 
 import java.util.ArrayList;
 import java.util.List;

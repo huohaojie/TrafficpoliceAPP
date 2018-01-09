@@ -1,5 +1,6 @@
 package com.example.trafficpoliceapp.ui;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ public class BaseActivity extends AppCompatActivity{
      * 2、统一的接口
      * 3、统一的方法
      */
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

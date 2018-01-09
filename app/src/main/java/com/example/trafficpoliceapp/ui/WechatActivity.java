@@ -45,7 +45,7 @@ public class WechatActivity extends AppCompatActivity{
     private void initView() {
         mListView = (ListView) findViewById(R.id.mListView);
         //解析接口http://v.juhe.cn/weixin/query?key=您申请的KEY
-        String url="http://v.juhe.cn/weixin/query?key=" + StaticClass.WECHAT_KEY;//+ "&ps=100"
+        String url="http://v.juhe.cn/weixin/query?key=" + StaticClass.WECHAT_KEY + "&ps=100";//+ "&ps=100"
 
         //解析接口
         RxVolley.get(url,new HttpCallback(){

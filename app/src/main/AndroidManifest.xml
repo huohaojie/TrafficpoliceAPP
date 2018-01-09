@@ -117,6 +117,15 @@
         <!--违章查询和限行查询-->
         <activity android:name=".ui.QueryActivity"/>
         <activity android:name=".ui.ChePaiActivity"/>
+        //违章信息录入
+        <activity android:name=".ui.InformationActivity"
+            android:label="@string/activity_information"/>
+        //违章信息查询
+        <activity android:name=".ui.TrafficqueryActivity"
+            android:label="@string/activity_traffic_query"/>
+        //违章代码查询
+        <activity android:name=".ui.TrafficCodeActivity"
+            android:label="@string/activity_traffic_code"/>
 
 
         <service android:name="com.baidu.location.f"
@@ -127,6 +136,17 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        //知乎图片选择器保存图片文件空类
+        <provider
+            android:authorities="com.example.trafficpoliceapp.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/filepaths"/>
+        </provider>
     </application>
 
 </manifest>
